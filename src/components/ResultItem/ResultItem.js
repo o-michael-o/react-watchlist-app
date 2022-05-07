@@ -3,13 +3,21 @@ import { useContext } from "react";
 import { GlobalContext } from "../../context/GlobalState";
 
 export const ResultItem = ({ movie }) => {
-  const { addMovieToWatchlist, watchlist } = useContext(GlobalContext);
+  const { addMovieToWatchlist, addMovieToWatched, watchlist, watched } =
+    useContext(GlobalContext);
 
   // check if movie in watchlist already
   let storedMovie = watchlist.find((obj) => obj.id === movie.id);
+  let storedMovieInWatched = watched.find((obj) => obj.id === movie.id);
 
-  // variable for toggling btn disabled state
-  const watchlistDisabled = storedMovie ? true : false;
+  // variable for toggling btn disabled state if in watchlist or watched
+  const watchlistDisabled = storedMovie
+    ? true
+    : storedMovieInWatched
+    ? true
+    : false;
+
+  const watchedDisabled = storedMovieInWatched ? true : false;
 
   return (
     <div className="result-card">
@@ -38,6 +46,13 @@ export const ResultItem = ({ movie }) => {
             disabled={watchlistDisabled}
           >
             add to watchlist
+          </button>
+          <button
+            className="btn"
+            onClick={() => addMovieToWatched(movie)}
+            disabled={watchedDisabled}
+          >
+            add to watched
           </button>
         </div>
       </div>
