@@ -3,9 +3,9 @@ import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import { WatchList } from "./WatchList/WatchList";
-import { Watched } from "../Watched/Watched";
-import { Add } from "../Add/Add";
-import { Header } from "../Header/Header";
+import { Watched } from "./Watched/Watched";
+import { Add } from "./Add/Add";
+import { Header } from "./Header/Header";
 
 function App() {
   return (
