@@ -23,7 +23,9 @@ export const WatchList = () => {
             ))}
           </div>
         ) : (
-          <h2 className="no-movies">No movies in your list</h2>
+          <div className="empty-list-container">
+            <h2 className="no-movies">No movies in your list</h2>
+          </div>
         )}
       </div>
     </div>
